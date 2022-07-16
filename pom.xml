@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.manning.pulsar</groupId>
+    <artifactId>pulsar-in-action</artifactId>
+    <packaging>pom</packaging>
+    <name>Pulsar In Action :: Parent</name>
+    <version>${revision}</version>
+
+    <properties>
+        <revision>1.0.0</revision>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <mockito.version>3.0.0</mockito.version>
+        <pulsar.version>2.6.2</pulsar.version>
+    </properties>
+
+    <modules>
+      <module>echofunction</module>
+    </modules>
+
+   <build>
+    <pluginManagement>
+  	  <plugins>
+  	    <plugin>
+	       <groupId>org.apache.maven.plugins</groupId>
+	       <artifactId>maven-compiler-plugin</artifactId>
+	       <version>3.8.1</version>
+		     <configuration>
+    	  	   <source>${maven.compiler.source}</source>
+    		   <target>${maven.compiler.target}</target>
+  		     </configuration>
+	    </plugin>
+	    <plugin>
+		<groupId>org.apache.nifi</groupId>
+		<artifactId>nifi-nar-maven-plugin</artifactId>
+		<version>1.2.0</version>
+		<extensions>true</extensions>
+		<executions>
+			<execution>
+				<phase>package</phase>
+				<goals>
+					<goal>nar</goal>
+				</goals>
+			</execution>
+		</executions>
+	  </plugin>
+	    <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.1.0</version>
+       </plugin>
+  	  </plugins>
+  	</pluginManagement>
+  </build>
+
+</project>

@@ -1,0 +1,4 @@
+name: spring
+description: Spring Http Source Connector
+sourceClass: guru.bonacci.pulsar.spring.source.SpringSource
+ssourceConfigClass: guru.bonacci.pulsar.spring.source.SpringSourceConfig
