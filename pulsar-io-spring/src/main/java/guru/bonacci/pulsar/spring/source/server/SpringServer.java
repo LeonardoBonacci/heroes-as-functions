@@ -3,6 +3,7 @@ package guru.bonacci.pulsar.spring.source.server;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -72,7 +73,7 @@ public class SpringServer {
         }
 
         public SpringServer build() {
-            checkNotNull(this.host, "host cannot be blank/null");
+            checkArgument(Strings.isNotBlank(this.host), "host cannot be blank/null");
             checkArgument(this.port >= 1024, "port must be set equal or bigger than 1024");
             checkNotNull(this.springSource, "springSource must be set");
 

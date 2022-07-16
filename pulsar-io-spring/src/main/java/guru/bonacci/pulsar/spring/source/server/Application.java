@@ -2,6 +2,7 @@ package guru.bonacci.pulsar.spring.source.server;
 
 import java.io.Serializable;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.apache.pulsar.functions.api.Record;
 import org.slf4j.Logger;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import guru.bonacci.pulsar.spring.source.SpringSource;
+import guru.bonacci.pulsar.spring.source.server.serialization.Person;
+import guru.bonacci.pulsar.spring.source.server.serialization.PersonSerde;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -25,6 +28,7 @@ public class Application implements ApplicationRunner {
   private static final Logger logger = LoggerFactory.getLogger(SpringServer.class);
 
   private final SpringSource springSource;
+  private final PersonSerde serde;
 
   @GetMapping
   public String echo() {
@@ -34,7 +38,10 @@ public class Application implements ApplicationRunner {
   @GetMapping("/foos/{foo}")
   public String foos(@PathVariable String foo) {
     logger.info("incoming " + foo);
-    springSource.consume(new SpringHttpRecord(Optional.ofNullable(""), foo.getBytes()));
+    Person p = new Person();
+    p.setId(UUID.randomUUID().toString());
+    p.setName(foo);
+    springSource.consume(new SpringHttpRecord(Optional.of(p.getId()), serde.serialize(p)));
     return "there we go " + foo;
   }
 

@@ -4,6 +4,8 @@ guru/bonacci/pulsar/spring/source/server/SpringServer$1.class
 guru/bonacci/pulsar/spring/source/server/SpringServer$Builder.class
 guru/bonacci/pulsar/spring/source/server/SpringSourceInitializer.class
 guru/bonacci/pulsar/spring/source/server/SpringServer.class
+guru/bonacci/pulsar/spring/source/server/serialization/Person.class
+guru/bonacci/pulsar/spring/source/server/serialization/PersonSerde.class
 guru/bonacci/pulsar/spring/source/server/Application$SpringHttpRecord.class
 guru/bonacci/pulsar/spring/source/SpringSource$PulsarServerRunnable.class
 guru/bonacci/pulsar/spring/source/SpringSourceConfig.class
